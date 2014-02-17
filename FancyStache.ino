@@ -46,7 +46,7 @@ void setup()
   EEPROM.write(0, (byte)(_colorMode+1));  
 
   stache.begin();
-  //_colorMode=4;    //Uncomment and change value to lock animation for testing
+  //_colorMode=8;    //Uncomment and change value to lock animation for testing
 }
 
 #define C(r, g, b) ((uint32_t)r << 16) | ((uint32_t)g <<  8) | b
@@ -175,7 +175,6 @@ void loop()
 
     static uint8_t second = 0;
     static RGB timeColor;
-    timeColor = colorMinSec[second];
 
     if(TimeElapsed(secRef, 1000))
     {
@@ -189,7 +188,7 @@ void loop()
       timeRef = millis();
       clearAll();
       for(int8_t i = -2; i<=2; i++)
-        setPixel(pos + i, timeColor.r * levels[abs(i)], timeColor.g * levels[abs(i)], timeColor.b * levels[abs(i)]);
+        setPixel(pos + i, Wheel((384/60) * second, levels[abs(i)]));
 
       //needs its own position and direction
       pos += timeDir ? 1 : -1;
