@@ -1,5 +1,5 @@
 #include "Adafruit_NeoPixel.h"
-#include "colortable.h"
+// #include "colortable.h" //Not used!
 #include <EEPROM.h>
 
 #define LOW 0.0625
@@ -174,7 +174,7 @@ void loop()
     static unsigned long timeRef = 0;
 
     static uint8_t second = 0;
-    static RGB timeColor;
+    // static RGB timeColor; //Not used
 
     if(TimeElapsed(secRef, 1000))
     {
